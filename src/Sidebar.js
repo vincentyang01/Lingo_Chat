@@ -36,7 +36,7 @@ function Sidebar(){
         <div className="sidebar">
             <div className="sidebar_header">
                 <div className="sidebar_info">
-                    <h2>Slack Clone</h2>
+                    <h2>Lingo Chat</h2>
                     <h3>
                         <FiberManualRecordIcon />
                         { user?.displayName}
@@ -44,7 +44,7 @@ function Sidebar(){
                 </div>
                 <CreateIcon />
             </div>
-            <SidebarOption Icon={InsertCommentIcon} title="Threads" />
+            {/* <SidebarOption Icon={InsertCommentIcon} title="Threads" />
             <SidebarOption Icon={InboxIcon} title="Mentions & reactions" />
             <SidebarOption Icon={DraftsIcon} title="Saved items" />
             <SidebarOption Icon={BookmarkBorderIcon} title="Channel Browser" />
@@ -54,7 +54,7 @@ function Sidebar(){
             <SidebarOption Icon={ExpandLessIcon} title="Show less" />
             <hr />
             <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
-            <hr />
+            <hr /> */}
             <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
 
             {/* Connect to DB and list all the channels with SidebarOption */}

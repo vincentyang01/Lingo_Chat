@@ -51,7 +51,7 @@ function Login() {
         <div className="login">
             <div className="login_container">
                 <img src="" alt=""/>
-                <h1> Sign in to Slack Clone </h1>
+                <h1> Sign in to Multi-Chat </h1>
                 <Button onClick={signIn}> Sign in with Google </Button>
             </div>
         </div>
