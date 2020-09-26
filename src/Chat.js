@@ -18,7 +18,6 @@ function Chat() {
             .doc(roomId)
             .onSnapshot(snapshot => (setRoomDetails(snapshot.data())))
         }
-
         db.collection("rooms")
         .doc(roomId)
         .collection('messages')
@@ -28,6 +27,7 @@ function Chat() {
 
     console.log(roomDetails)
     console.log("Messages >>", roomMessages)
+
     return (
         <div className="chat">
             <div className="chat_header">
@@ -55,6 +55,7 @@ function Chat() {
                 ))}
             </div>
             <ChatInput channelName={roomDetails?.name} channelId={roomId} />
+
         </div>
     )
 }

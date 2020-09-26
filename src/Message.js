@@ -13,6 +13,7 @@ function Message({message, timestamp, user, userImage}) {
                 </span>
             </h4>
             <p>{message}</p>
+
             </div>
         </div>
     )

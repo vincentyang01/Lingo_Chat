@@ -21,9 +21,9 @@ function Sidebar(){
     const [{ user }] = useStateValue();
 
     useEffect(() => {
-        db.collection('rooms').onSnapshot(snapshot => (
+        db.collection('rooms').onSnapshot((snapshot) => (
             setChannels(
-                snapshot.docs.map(doc => ({
+                snapshot.docs.map((doc) => ({
                 id: doc.id,
                 name: doc.data().name
             }))
