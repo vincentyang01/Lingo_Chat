@@ -14,9 +14,11 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import AddIcon from "@material-ui/icons/Add"
 import db from "./firebase"
+import { useStateValue } from "./StateProvider"
 
 function Sidebar(){
     const [channels, setChannels] = useState([])
+    const [{ user }] = useStateValue();
 
     useEffect(() => {
         db.collection('rooms').onSnapshot((snapshot) => (
@@ -34,15 +36,15 @@ function Sidebar(){
         <div className="sidebar">
             <div className="sidebar_header">
                 <div className="sidebar_info">
-                    <h2>Slack Clone</h2>
+                    <h2>Lingo Chat</h2>
                     <h3>
                         <FiberManualRecordIcon />
-                        Vincent
+                        { user?.displayName}
                     </h3>
                 </div>
                 <CreateIcon />
             </div>
-            <SidebarOption Icon={InsertCommentIcon} title="Threads" />
+            {/* <SidebarOption Icon={InsertCommentIcon} title="Threads" />
             <SidebarOption Icon={InboxIcon} title="Mentions & reactions" />
             <SidebarOption Icon={DraftsIcon} title="Saved items" />
             <SidebarOption Icon={BookmarkBorderIcon} title="Channel Browser" />
@@ -52,7 +54,7 @@ function Sidebar(){
             <SidebarOption Icon={ExpandLessIcon} title="Show less" />
             <hr />
             <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
-            <hr />
+            <hr /> */}
             <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
 
             {/* Connect to DB and list all the channels with SidebarOption */}
