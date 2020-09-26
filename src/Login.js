@@ -17,28 +17,6 @@ function Login() {
                     type: actionTypes.SET_USER,
                     user: result.user,
                 })
-                const optionsGET = { //Create options for a get
-                    "method": "GET", 
-                    "header": { 
-                        "Content-Type": "application/json", 
-                        "accept": "application/json" 
-                    },
-                body: JSON.stringify({ name: result.user.displayName, email: result.user.email })}
-                const optionsPOST = { //Create options for a post
-                    "method": "POST",
-                    "header": {
-                        "Content-Type": "application/json",
-                        "accept": "application/json"
-                    },
-                body: JSON.stringify({ name: result.user.displayName, email: result.user.email })}
-                {fetch("http://localhost:3000/users/", optionsGET) //If the user exists, login else create
-                    ?  
-                        (dispatch({
-                            type: actionTypes.SET_USER,
-                            user: result.user
-                        }))
-                    : (fetch("http://localhost:3000/users/", optionsPOST))
-                    }
 
             })
             .catch((error) => {
