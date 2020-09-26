@@ -45,12 +45,13 @@ function Chat() {
                 </div>
             </div>
             <div className="chat_messages">
-                {roomMessages.map(({message, timestamp, user, userImage}) => (
+                {roomMessages.map(({message, timestamp, user, userImage, translation}) => (
                     <Message 
                         message = {message}
                         timestamp = {timestamp}
                         user={user}
                         userImage={userImage}
+                        translation={translation}
                     />
                 ))}
             </div>

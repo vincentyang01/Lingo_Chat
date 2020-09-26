@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Message.css"
 
-function Message({message, timestamp, user, userImage}) {
+function Message({message, timestamp, user, userImage, translation}) {
     return(
         <div className="message">
             <img src={userImage} alt=""/>
@@ -13,7 +13,9 @@ function Message({message, timestamp, user, userImage}) {
                 </span>
             </h4>
             <p>{message}</p>
-
+            <pre>
+                <code>{translation}</code>
+            </pre>
             </div>
         </div>
     )

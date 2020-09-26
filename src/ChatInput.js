@@ -4,46 +4,54 @@ import db from "./firebase"
 import { useStateValue } from "./StateProvider"
 import firebase from "firebase"
 
-const translate = (message) => {
-    let uri = encodeURI(message)
 
-    fetch("https://microsoft-azure-translation-v1.p.rapidapi.com/translate?from=en&to=es&text="+ uri, {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-host": "microsoft-azure-translation-v1.p.rapidapi.com",
-        "x-rapidapi-key": "",
-        "accept": "application/json"
-      }
-    })
-    .then(response => response.text())
-    .then(translate => {console.log("running translate function:",translate) 
-    let div = document.createElement('div')
-    div.innerHtml = translate 
-    debugger 
-})
-    .catch(err => {
-      console.log(err);
-    });
-}
+
 
 function ChatInput({ channelName, channelId }) {
+    let translate = ''
     const [input, setInput] = useState('');
+    //const [translate, setTranslate] = useState('');
     const [{ user }] = useStateValue();
-
     const sendMessage = (e) => {
         e.preventDefault();
-        translate(input)
-        if(channelId) {
+        let uri = encodeURI(input)
+        let lang = 'en'
+        
+        fetch(`https://microsoft-azure-translation-v1.p.rapidapi.com/translate?from=${lang}&to=es&text=${uri}`, {
+          "method": "GET",
+          "headers": {
+            "x-rapidapi-host": "microsoft-azure-translation-v1.p.rapidapi.com",
+            "x-rapidapi-key": "",
+            "accept": "application/json"
+          }
+        })
+        .then(response => response.text())
+        .then(translated => {console.log("running translate function:",translated) 
+        let words = translated
+        let first = words.split(">")
+        let second = first[1].split("<")
+        translate = second[0]
+
+        
+         
+        })
+        .catch(err => {
+          console.log(err);
+        });
+        setTimeout(function(){if(channelId) {
+           
             db.collection('rooms')
                 .doc(channelId).collection('messages').add({
                     message: input,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     user: user.displayName,
-                    userImage: user.photoURL
-                    //translated: 
+                    userImage: user.photoURL,
+                    translation: translate
                 })
+
             setInput('')
-        }
+        } }, 1000);
+        
     }
     return (
         <div className="chatInput">
