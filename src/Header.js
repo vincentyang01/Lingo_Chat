@@ -6,6 +6,7 @@ import SearchIcon from '@material-ui/icons/Search'
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline"
 import { useStateValue } from "./StateProvider"
 
+
 function Header() {
     const [{ user }] = useStateValue();
 

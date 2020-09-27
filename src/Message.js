@@ -12,9 +12,9 @@ function Message({message, timestamp, user, userImage, translation}) {
                     {new Date(timestamp?.toDate()).toUTCString()}
                 </span>
             </h4>
-            <p>{message}</p>
+            <p class="msg">{message}</p>
             <pre>
-                <code>{translation}</code>
+                <code class="translate">{translation}</code>
             </pre>
             </div>
         </div>
