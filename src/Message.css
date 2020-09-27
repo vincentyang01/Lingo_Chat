@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     padding: 20px;
+    overflow: hidden;
 }
 
 .message > img {
@@ -10,8 +11,20 @@
     object-fit: contain;
 }
 
+.translate {
+    background-color: #00ffff61;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 3px -4px 20px 2px #0000008a;
+}
+
 .message_info {
     padding-left: 10px;
+    
+}
+
+.msg {
+    padding: 0 10px 10px 0;
 }
 
 .message_timestamp {

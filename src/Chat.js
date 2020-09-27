@@ -7,6 +7,7 @@ import db from './firebase.js'
 import Message from "./Message"
 import ChatInput from "./ChatInput"
 
+
 function Chat() {
     const { roomId } = useParams();
     const [roomDetails, setRoomDetails] = useState(null)
@@ -45,18 +46,19 @@ function Chat() {
                 </div>
             </div>
             <div className="chat_messages">
-                {roomMessages.map(({message, timestamp, user, userImage}) => (
+                {roomMessages.map(({message, timestamp, user, userImage, translation}) => (
                     <Message 
                         message = {message}
                         timestamp = {timestamp}
                         user={user}
                         userImage={userImage}
+                        translation={translation}
                     />
                 ))}
             </div>
             <ChatInput channelName={roomDetails?.name} channelId={roomId} />
-
         </div>
+            
     )
 }
 
