@@ -1,21 +1,26 @@
-.message {
+.message, .me{
     display: flex;
     align-items: center;
     padding: 20px;
     overflow: hidden;
 }
 
-.message > img {
+.me {
+    margin-left: 600px
+}
+
+.message > img, .me > img {
     height: 50px;
     width: 50px;
     object-fit: contain;
+    border-radius: 30px;
 }
 
 .translate {
     background-color: #00ffff61;
-    border-radius: 10px;
+    border-radius: 0 15px 15px 15px;
     padding: 5px;
-    box-shadow: 3px -4px 20px 2px #0000008a;
+    box-shadow: 3px -4px 20px 2px #00000063;;
 }
 
 .message_info {

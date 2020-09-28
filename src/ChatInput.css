@@ -2,6 +2,25 @@
     border-radius: 20px;
 }
 
+.select {
+    font-size: 10px;
+    position: absolute;
+    margin-top: -1167px;
+    margin-left: 107px;
+}
+
+.lang {
+    font-size: 20px;
+    color: white;
+}
+
+.chatpInput > form > select {
+    font-size: 20px;
+    border-radius: 10px;
+    outline:none;
+    position: fixed;
+
+}
 .chatInput > form {
     position: relative;
     display: flex;
@@ -22,3 +41,8 @@
 
 }
 
+audio {
+    font-size: 10px;
+    zoom: .6;
+    padding-top: 20px;
+}

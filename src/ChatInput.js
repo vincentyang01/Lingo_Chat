@@ -7,16 +7,18 @@ import firebase from "firebase"
 
 
 function ChatInput({ channelName, channelId }) {
-    let [lang, setLang] = useState('en');
+    let [lang, setLang] = useState('es');
     
     let translate = ''
     const [input, setInput] = useState('');
     const [{ user }] = useStateValue();
     const sendMessage = (e) => {
-        debugger
-        console.log("in sendMessage", lang)
+ 
         e.preventDefault();
+       
         let uri = encodeURI(input)
+        
+        
         
         fetch(`https://microsoft-azure-translation-v1.p.rapidapi.com/translate?to=${lang}&text=${uri}`, {
           "method": "GET",
@@ -27,7 +29,7 @@ function ChatInput({ channelName, channelId }) {
           }
         })
         .then(response => response.text())
-        .then(translated => {console.log("running translate function:",translated) 
+        .then(translated => {
         let words = translated
         let first = words.split(">")
         let second = first[1].split("<")
@@ -47,26 +49,22 @@ function ChatInput({ channelName, channelId }) {
                     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     user: user.displayName,
                     userImage: user.photoURL,
-                    translation: translate
+                    translation: translate,
+                    language: lang
+                   
                 })
-
+                
             setInput('')
-        } }, 1000);
+        } }, 500);
         
         
     }
     return (
         <div className="chatInput">
+            
             <form>
-                <input 
-                    value={input}
-                    onChange={e => setInput(e.target.value)}
-                    type="text" 
-                    placeholder={`Message #${channelName?.toLowerCase()}`} />
-                <button type="submit" onClick={sendMessage}>SEND</button>
-            </form>
-            <div>       
-            <select onChange={(e) => setLang(e.target.value)} >
+                <select onChange={(e) => setLang(e.target.value)}>
+                <option value="" disabled selected hidden>Select language to translate to...</option>
                 <option value="en">English</option>
                 <option value="ar">Arabic</option>
                 <option value="zh-CHS">Chinese</option>
@@ -78,9 +76,20 @@ function ChatInput({ channelName, channelId }) {
                 <option value="ru">Russian</option>
                 <option value="es">Spanish</option>
             </select>
+                <input 
+                
+                    value={input}
+                    onChange={e => setInput(e.target.value)}
+                    type="text" 
+                    placeholder={`Message #${channelName?.toLowerCase()}`} />
+                <button type="submit" onClick={sendMessage}>SEND</button>
+            </form>
+            {/* <div class="select">    
+            <span class="lang">Message will translate in....</span>    */}
+            
   
        
-        </div>
+        {/* </div> */}
         </div>
     )
 }

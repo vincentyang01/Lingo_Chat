@@ -12,7 +12,7 @@ function Login() {
         auth
             .signInWithPopup(provider)
             .then(result => {
-                console.log("This is the results!!!!!!!!!!!!!!", result)
+              
                 dispatch({
                     type: actionTypes.SET_USER,
                     user: result.user,

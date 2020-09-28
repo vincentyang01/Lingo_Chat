@@ -16,14 +16,14 @@ function Header() {
                 <Avatar className="header_avatar" 
                     alt={user?.displayName} 
                     src={user?.photoURL} />
-                <AccessTimeIcon />
+                {/* <AccessTimeIcon /> */}
             </div>
             <div className="header_search">
-                <SearchIcon />
-                <input placeholder="Search for a Group" />
+                {/* <SearchIcon />
+                <input placeholder="Search for a Group" /> */}
             </div>
             <div className="header_right">
-                <HelpOutlineIcon />
+                {/* <HelpOutlineIcon /> */}
             </div>
         </div>
     )
