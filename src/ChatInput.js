@@ -87,16 +87,9 @@ function ChatInput({ channelName, channelId, language }) {
         <div className="chatInput">
     
             <form>
-                <input 
-                    value={input}
-                    onChange={e => setInput(e.target.value)}
-                    type="text" 
-                    placeholder={`Message #${channelName?.toLowerCase()}`} />
-                <button type="submit" onClick={() => sendMessage(lang)}>SEND</button>
-            {/* </form> */}
-            {/* <div>        */}
+               
             <select onChange={(e) => setLang(e.target.value)} >
-                <option value="" disabled selected hidden>Select language to translate to...</option>
+                <option value="en" disabled selected hidden>Select language to translate to...</option>
                 <option value="en">English</option>
                 <option value="ar">Arabic</option>
                 <option value="zh-CHS">Chinese</option>
