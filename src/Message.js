@@ -12,7 +12,6 @@ function Message({message, timestamp, user, userImage, translation, me, language
     //let [lang, setLang] = useState('en');
     
     const getTranslation = (e, language) => {
-      
         const lang = language
         const sentance = encodeURI(e.target.innerText)
         
@@ -22,19 +21,14 @@ function Message({message, timestamp, user, userImage, translation, me, language
                 "x-rapidapi-host": "microsoft-azure-translation-v1.p.rapidapi.com",
                 "x-rapidapi-key": ""}})
         .then(response => { 
-             audioTranslation = response.url
-             play(response.url)
+            audioTranslation = response.url
+            play(response.url)
         })
         .catch(err => {console.log(err)});   
-        
-
     }
-
-   
     function play(url) {
-       
         //var audio = document.getElementById("audio");
-      new Audio(url).play()
+        new Audio(url).play()
     }
 
     
@@ -45,13 +39,13 @@ function Message({message, timestamp, user, userImage, translation, me, language
 
 
     return(
-       self ? <div className="me"> 
+        self ? <div className="me"> 
             <img src={userImage} alt=""/>
             <div className="message_info">
             <h4>
-                {user} 
+                {user}
                 <span className="message_timestamp">
-                    {new Date(timestamp?.toDate()).toDateString()}, {new Date(timestamp?.toDate()).toLocaleTimeString()}
+                    {" " + new Date(timestamp?.toDate()).toDateString()} <br />{new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
             </h4>
             <p class="msg">{message}</p>
@@ -63,9 +57,9 @@ function Message({message, timestamp, user, userImage, translation, me, language
         <img src={userImage} alt=""/>
             <div className="message_info">
             <h4>
-                {user} 
+                {user}
                 <span className="message_timestamp">
-                    {new Date(timestamp?.toDate()).toDateString()}, {new Date(timestamp?.toDate()).toLocaleTimeString()}
+                    {" " + new Date(timestamp?.toDate()).toDateString()} <br />{new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
             </h4>
             <p class="msg">{message}</p>
