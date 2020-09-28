@@ -7,10 +7,10 @@ import firebase from "firebase"
 
 
 function ChatInput({ channelName, channelId, language }) {
-
-    let [lang, setLang] = useState('');
+    let convertToThisCode = ""
+    // let [lang, setLang] = useState('');
     console.log("I'm inside chat input. What are the props? ", language)
-    console.log("Checking reassignment to code", lang)
+    // console.log("Checking reassignment to code", lang)
 
     let translate = ''
     const [input, setInput] = useState('');
@@ -18,34 +18,33 @@ function ChatInput({ channelName, channelId, language }) {
 
     const languageCode = () => {
         console.log("In ChatInput, under languageCode: ", language)
-        debugger
-        if(language === "English") {setLang("en")}
-        else if(language === "Arabic") {
-            setLang("ar")
-        } 
-        else if(language === "Chinese") {
-            setLang("zh-CHS")
-        }
-        else if(language === "Filipino") {setLang = "fi"}
-        else if(language === "French") {setLang = "fr"}
-        else if(language === "Hindi") {setLang = "hi"}
-        else if(language === "Italian") {setLang = "it"}
-        else if(language === "Japanese") {setLang = "ja"}
-        else if(language === "Korean") {setLang = "kr"}
-        else if(language === "Portuguese") {setLang = "pt"}
-        else if(language === "Russian") {setLang = "ru"}
-        else if(language === "Spanish") {setLang = "es"}
+        // debugger
+        if(language === "English") {convertToThisCode = "en"}
+        else if(language === "Arabic") {convertToThisCode = "ar"} 
+        else if(language === "Chinese") {convertToThisCode = "zh-CHS"}
+        else if(language === "Filipino") {convertToThisCode = "fil"}
+        else if(language === "French") {convertToThisCode = "fr"}
+        else if(language === "Hindi") {convertToThisCode = "hi"}
+        else if(language === "Italian") {convertToThisCode = "it"}
+        else if(language === "Japanese") {convertToThisCode = "ja"}
+        else if(language === "Korean") {convertToThisCode = "kr"}
+        else if(language === "Portuguese") {convertToThisCode = "pt"}
+        else if(language === "Russian") {convertToThisCode = "ru"}
+        else if(language === "Spanish") {convertToThisCode = "es"}
     }
 
     const sendMessage = (e) => {
         e.preventDefault()
         languageCode()
-        console.log("in sendMessage", lang)
+        // setLang(convertToThisCode)
+        // console.log("in sendMessage", lang)
+        console.log("in sendMessage - convert variable: ", convertToThisCode)
+        // debugger
         let uri = encodeURI(input)
         
         
         
-        fetch(`https://microsoft-azure-translation-v1.p.rapidapi.com/translate?to=${lang}&text=${uri}`, {
+        fetch(`https://microsoft-azure-translation-v1.p.rapidapi.com/translate?to=${convertToThisCode}&text=${uri}`, {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "microsoft-azure-translation-v1.p.rapidapi.com",
@@ -75,7 +74,7 @@ function ChatInput({ channelName, channelId, language }) {
                     user: user.displayName,
                     userImage: user.photoURL,
                     translation: translate,
-                    language: lang
+                    language: convertToThisCode
                 })
                 
             setInput('')
@@ -88,7 +87,7 @@ function ChatInput({ channelName, channelId, language }) {
     
             <form>
                
-            <select onChange={(e) => setLang(e.target.value)} >
+            {/* <select onChange={(e) => setLang(e.target.value)} >
                 <option value="en" disabled selected hidden>Select language to translate to...</option>
                 <option value="en">English</option>
                 <option value="ar">Arabic</option>
@@ -102,7 +101,7 @@ function ChatInput({ channelName, channelId, language }) {
                 <option value="pt">Portuguese</option>
                 <option value="ru">Russian</option>
                 <option value="es">Spanish</option>
-            </select>
+            </select> */}
                 <input 
                 
                     value={input}

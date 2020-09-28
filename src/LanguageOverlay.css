@@ -56,3 +56,96 @@
     background-color: white;
     color:red;
 }
+
+#a4 {
+    background-color: gold;
+    color: red;
+    transition: 0.8s;
+}
+
+#a4:hover {
+    background-color: white;
+    color: blue;
+}
+
+#a5{
+    background-color: #0055A4;
+    color: #EF4135;
+    transition: 0.8s;
+}
+
+#a5:hover {
+    background-color: white;
+    color: #0055a4;
+}
+
+#a6 {
+    background-color:#FF9933;
+    color: #138808;
+    transition: 0.8s;
+}
+
+#a6:hover {
+    background-color: white;
+    color: #FF9933;
+}
+
+#a7 {
+    background-color:#008c45;
+    color: #cd212a;
+    transition: 0.8s;
+}
+#a7:hover{
+    background-color:#cd212a;
+    color: #f4f5f0;
+}
+
+#a8{
+    background-color: red;
+    color: white;
+    transition: 0.8s;
+}
+#a8:hover{
+    background-color: white;
+    color:red
+}
+
+#a9{
+    background-color: #CD2E3A;
+    color:#0047A0;
+    transition: 0.8s;
+}
+#a9:hover{
+    background-color: black;
+    color: white;
+}
+
+#a10{
+    background-color: #ffff00;
+    color:#003399;
+    transition: 0.8s;
+}
+#a10:hover{
+    background-color: #ff0000;
+    color: #006600;
+}
+
+#a11{
+    background-color:blue;
+    color:#da291c;
+    transition: 0.8;
+}
+#a11:hover{
+    background-color:#da291c;
+    color:white;
+}
+
+#a12{
+    background-color:#aa151b;
+    color:#f1bf00;
+    transition: 0.8;
+}
+#a12:hover{
+    background-color:#f1bf00;
+    color: #aa151b;
+}
