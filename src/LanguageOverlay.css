@@ -1,0 +1,58 @@
+.overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+}
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+#a1 {
+    background-color: green;
+    color: red;
+    transition: 0.8s;
+}
+
+#a1:hover {
+    background-color: white;
+    color: black;
+}
+
+#a2 {
+    background-color: red;
+    color:gold;
+    transition: 0.8s;
+}
+#a2:hover {
+    background-color:yellow;
+    color: red
+}
+
+#a3 {
+    background-color: blue;
+    color: white;
+    transition: 0.8s;
+}
+#a3:hover {
+    background-color: white;
+    color:red;
+}

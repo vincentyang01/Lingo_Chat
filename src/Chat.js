@@ -27,7 +27,7 @@ function Chat(props) {
         .onSnapshot((snapshot) => setRoomMessages(snapshot.docs.map((doc) => doc.data())))
     }, [roomId]);
 
-  
+
     const me = props.user.displayName
 
     return (
@@ -60,7 +60,7 @@ function Chat(props) {
                         ))
                 }
             </div>
-            <ChatInput channelName={roomDetails?.name} channelId={roomId} />
+            <ChatInput channelName={roomDetails?.name} channelId={roomId} language={props.sendLanguage}/>
         </div>
             
     )

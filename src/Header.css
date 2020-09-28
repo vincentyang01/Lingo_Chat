@@ -28,7 +28,21 @@
     color: gray;
     /* border: 1px gray solid; */
     border-radius: 6px;
+    text-align:center;
+    
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+
 }
+
+.header_search:hover {
+    background-color: #3e8e41;
+    color: white;
+  }
 
 .header_search > input {
     background-color: transparent;
@@ -36,6 +50,8 @@
     text-align: center;
     min-width: 35vw;
 }
+
+
 
 .header_right {
     flex: 0.3;
@@ -47,3 +63,4 @@
     margin-left: auto;
     margin-right: 20px;
 }
+

@@ -7,8 +7,15 @@ import Chat from "./Chat"
 import Login from "./Login"
 import { useStateValue } from "./StateProvider"
 
-function App() {
+function App(props) {
   const [{ user }, dispatch] = useStateValue()
+  const [language, setLanguage] = useState(props)
+
+  let sendLanguage = (props) => {
+    setLanguage(props)
+    console.log("Back in App: ", props, language)
+    // return props
+  }
 
   return (
     <div className="app">
@@ -17,12 +24,12 @@ function App() {
         ? ( <Login />)
         : (
         <>
-          <Header />
+          <Header sendLanguage={sendLanguage}/>
           <div className="app_body">
             <Sidebar />
             <Switch>
               <Route path="/room/:roomId">
-                <Chat user={user}/>
+                <Chat user={user} sendLanguage={language}/>
               </Route>
               <Route path="/">
                 <h1>Welcome!</h1>
