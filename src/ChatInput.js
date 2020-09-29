@@ -13,6 +13,7 @@ function ChatInput({ channelName, channelId, language }) {
     // console.log("Checking reassignment to code", lang)
 
     let translate = ''
+    let nativeLang = ''
     const [input, setInput] = useState('');
     const [{ user }] = useStateValue();
 
@@ -47,6 +48,25 @@ function ChatInput({ channelName, channelId, language }) {
         console.log("in sendMessage - convert variable: ", convertToThisCode)
         // debugger
         let uri = encodeURI(input)
+
+        fetch(`https://microsoft-azure-translation-v1.p.rapidapi.com/Detect?text=${uri}`, {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "microsoft-azure-translation-v1.p.rapidapi.com",
+                "x-rapidapi-key": ""
+            }
+            })
+            .then(response => response.text())
+            .then(detectedLang => {
+            let words = detectedLang
+            let first = words.split(">")
+            let second = first[1].split("<")
+            nativeLang = second[0]
+            })
+            .catch(err => {
+                console.log(err);
+            }
+        );
         
         
         
@@ -80,9 +100,9 @@ function ChatInput({ channelName, channelId, language }) {
                     user: user.displayName,
                     userImage: user.photoURL,
                     translation: translate,
-                    language: convertToThisCode
+                    language: nativeLang
                 })
-                
+                console.log("native langauge ",nativeLang)
             setInput('')
         } }, 500);
         

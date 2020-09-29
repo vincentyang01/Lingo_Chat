@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import "./Message.css"
+import VolumeDownIcon from '@material-ui/icons/VolumeDown';
 
 
 
@@ -14,7 +15,7 @@ function Message({message, timestamp, user, userImage, translation, me, language
     const getTranslation = (e, language) => {
         const lang = language
         const sentance = encodeURI(e.target.innerText)
-        
+        // voice response
         fetch(`https://microsoft-azure-translation-v1.p.rapidapi.com/Speak?text=${sentance}&language=${lang}`, {
             "method": "GET",
             "headers": {
@@ -59,9 +60,12 @@ function Message({message, timestamp, user, userImage, translation, me, language
                     {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
             </h4>
-            <p class="msg">{message}</p>
+            
+    <span>{language === 'fil-PH' || language === 'gu' ? null : <VolumeDownIcon/>}</span><span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}>{message}</span>
+            <div></div>
             <pre>
-                <code class="translate" data-id={language} onClick={(e) => getTranslation(e, language)}>{translation}
+                <br></br>
+                <code class="translate" >{translation}
                 </code>
             </pre>
                
