@@ -1,15 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './Chat.css'
 import { useParams } from "react-router-dom"
-import StarBorderOutlinedIcon from "@material-ui/icons/StarBorderOutlined"
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined"
 import db from './firebase.js'
 import Message from "./Message"
 import ChatInput from "./ChatInput"
 
 
 function Chat(props) {
-    let objDiv
+    // let objDiv
     const { roomId } = useParams();
     const [roomDetails, setRoomDetails] = useState(null)
     const [roomMessages, setRoomMessages] = useState([])
@@ -27,8 +25,15 @@ function Chat(props) {
         .onSnapshot((snapshot) => setRoomMessages(snapshot.docs.map((doc) => doc.data())))
     }, [roomId]);
 
-
     const me = props.user.displayName
+
+    const messagesEndRef = useRef(null)
+    const scrollToBottom = () => {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+    }
+    useEffect(scrollToBottom, [roomMessages]);
+
+
 
     return (
         <div className="chat" id="messageWindow">
@@ -36,12 +41,10 @@ function Chat(props) {
                 <div className="chat_headerLeft">
                     <h4 className="chat_channelName">
                         <strong> {roomDetails?.name}</strong>
-                        {/* <StarBorderOutlinedIcon /> */}
                     </h4>
                 </div>
                 <div className="chat_headerRight">
                     <p>
-                        {/* <InfoOutlinedIcon /> Details */}
                     </p>
 
                 </div>
@@ -60,7 +63,8 @@ function Chat(props) {
                         ))
                 }
             </div>
-            <ChatInput channelName={roomDetails?.name} channelId={roomId} language={props.sendLanguage}/>
+            <ChatInput channelName={roomDetails?.name} channelId={roomId} language={props.sendLanguage} />
+            <div ref={messagesEndRef}></div>
         </div>
             
     )

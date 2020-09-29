@@ -6,10 +6,17 @@ import SidebarOption from "./SidebarOption"
 import AddIcon from "@material-ui/icons/Add"
 import db from "./firebase"
 import { useStateValue } from "./StateProvider"
+import LanguageOverlay from './LanguageOverlay'
 
-function Sidebar(){
+
+function Sidebar(props){
     const [channels, setChannels] = useState([])
     const [{ user }] = useStateValue();
+    const [panel, setPanel] = useState(true);
+
+    const show = () => {
+        setPanel(!panel)
+    }
 
     useEffect(() => {
         db.collection('rooms').onSnapshot((snapshot) => (
@@ -35,18 +42,12 @@ function Sidebar(){
                 </div>
                 <CreateIcon />
             </div>
-            {/* <SidebarOption Icon={InsertCommentIcon} title="Threads" />
-            <SidebarOption Icon={InboxIcon} title="Mentions & reactions" />
-            <SidebarOption Icon={DraftsIcon} title="Saved items" />
-            <SidebarOption Icon={BookmarkBorderIcon} title="Channel Browser" />
-            <SidebarOption Icon={PeopleAltIcon} title="People & User Groups" />
-            <SidebarOption Icon={AppsIcon} title="Apps" />
-            <SidebarOption Icon={FileCopyIcon} title="File browser" />
-            <SidebarOption Icon={ExpandLessIcon} title="Show less" />
-            <hr />
-            <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
-            <hr /> */}
+            <div className="langSelect" onClick={() => show()}> Select Language
+                {panel ? <LanguageOverlay sendLanguage={props.sendLanguage} /> : null}
+            </div>
+            
             <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
+            
 
             {/* Connect to DB and list all the channels with SidebarOption */}
             {channels.map(channel => (

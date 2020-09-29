@@ -14,9 +14,9 @@ function App(props) {
   let sendLanguage = (props) => {
     setLanguage(props)
     console.log("Back in App: ", props, language)
-    // return props
   }
 
+    
   return (
     <div className="app">
       <Router>
@@ -24,12 +24,12 @@ function App(props) {
         ? ( <Login />)
         : (
         <>
-          <Header sendLanguage={sendLanguage}/>
+          {/* <Header /> */}
           <div className="app_body">
-            <Sidebar />
+            <Sidebar sendLanguage={sendLanguage}/>
             <Switch>
               <Route path="/room/:roomId">
-                <Chat user={user} sendLanguage={language}/>
+                <Chat user={user} sendLanguage={language} />
               </Route>
               <Route path="/">
                 <h1>Welcome!</h1>

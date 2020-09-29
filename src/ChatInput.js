@@ -113,21 +113,7 @@ function ChatInput({ channelName, channelId, language }) {
     
             <form>
                
-            {/* <select onChange={(e) => setLang(e.target.value)} >
-                <option value="en" disabled selected hidden>Select language to translate to...</option>
-                <option value="en">English</option>
-                <option value="ar">Arabic</option>
-                <option value="zh-CHS">Chinese</option>
-                <option value="fil">Filipino</option>
-                <option value="fr">French</option>
-                <option value="hi">Hindi</option>
-                <option value="it">Italian</option>
-                <option value="ja">Japanese</option>
-                <option value="kr">Korean</option>
-                <option value="pt">Portuguese</option>
-                <option value="ru">Russian</option>
-                <option value="es">Spanish</option>
-            </select> */}
+            
                 <input 
                 
                     value={input}
