@@ -7,7 +7,7 @@ import firebase from "firebase"
 
 
 function ChatInput({ channelName, channelId, language }) {
-    let convertToThisCode = ""
+    let convertToThisCode = "en"
     // let [lang, setLang] = useState('');
     console.log("I'm inside chat input. What are the props? ", language)
     // console.log("Checking reassignment to code", lang)
@@ -27,10 +27,16 @@ function ChatInput({ channelName, channelId, language }) {
         else if(language === "Hindi") {convertToThisCode = "hi"}
         else if(language === "Italian") {convertToThisCode = "it"}
         else if(language === "Japanese") {convertToThisCode = "ja"}
-        else if(language === "Korean") {convertToThisCode = "kr"}
+        else if(language === "Korean") {convertToThisCode = "ko"}
         else if(language === "Portuguese") {convertToThisCode = "pt"}
         else if(language === "Russian") {convertToThisCode = "ru"}
         else if(language === "Spanish") {convertToThisCode = "es"}
+        else if(language === "Hebrew") {convertToThisCode = "he"}
+        else if(language === "German") {convertToThisCode = "de"}
+        else if(language === "Indonesian") {convertToThisCode = "id"}
+        else if(language === "Thai") {convertToThisCode = "th"}
+        else if(language === "Vietnamese") {convertToThisCode = "vi"}
+        else if(language === "Gujarati") {convertToThisCode = "gu"}
     }
 
     const sendMessage = (e) => {

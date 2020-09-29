@@ -79,13 +79,13 @@
     color: #0055a4;
 }
 
-#a6 {
+#a6, #a18 {
     background-color:#FF9933;
     color: #138808;
     transition: 0.8s;
 }
 
-#a6:hover {
+#a6:hover, #a18:hover {
     background-color: white;
     color: #FF9933;
 }
@@ -148,4 +148,54 @@
 #a12:hover{
     background-color:#f1bf00;
     color: #aa151b;
+}
+
+#a13{
+    background-color:#0038B8;
+    color:white;
+    transition: 0.8;
+}
+#a13:hover{
+    background-color:white;
+    color: #0038B8;
+}
+
+#a14{
+    background-color:#FFCE00;
+    color:black;
+    transition: 0.8;
+}
+#a14:hover{
+    background-color:#DD0000;
+    color: black;
+}
+
+#a15{
+    background-color:white;
+    color:#FF0000;
+    transition: 0.8;
+}
+#a15:hover{
+    background-color:#FF0000;
+    color: white;
+}
+
+#a16{
+    background-color:#A51931;
+    color:#2D2A4A;
+    transition: 0.8;
+}
+#a16:hover{
+    background-color:#A51931;
+    color: #F4F5F8;
+}
+
+#a17{
+    background-color:#DA251D;
+    color:#FFCD00;
+    transition: 0.8;
+}
+#a17:hover{
+    background-color:#FFCD00;
+    color: #DA251D;
 }
