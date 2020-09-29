@@ -1,7 +1,8 @@
 .sidebar {
-    background-color: var(--slack-color);
+    /* background-color: var(--slack-color); */
+    background-color: #18399e;
     flex: 0.3;
-    border-top: 1px solid #49274b;
+    border-top: 1px solid #840284;
     max-width: 260px;
     color: white;
 }
@@ -50,3 +51,37 @@
     background-color: white;
     border-radius: 999px;
 }
+
+.langSelect {
+    flex: 0.4;
+    background-color: #5836bb;
+    text-align: center;
+    display: flex;
+    padding: 0 50px;
+    color: rgb(48, 150, 184);
+    /* border: 1px gray solid; */
+    border-radius: 6px;
+    text-align:center;
+    padding: 10px;
+    
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+    
+}
+.langSelect:hover {
+    background-color: #3e8e41;
+    color: white;
+}
+
+/*     
+    .header_search > input {
+        background-color: transparent;
+        border: none;
+        text-align: center;
+        min-width: 35vw;
+    }
+} */

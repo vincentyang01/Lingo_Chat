@@ -28,13 +28,24 @@ function Message({message, timestamp, user, userImage, translation, me, language
         .catch(err => {console.log(err)});   
     }
     function play(url) {
-        //var audio = document.getElementById("audio");
         new Audio(url).play()
     }
 
+    const links = () => {
+        let tokens = message.split(" ")
+        for(let i = 0; i < tokens.length; i++) {
+            if(tokens[i].includes("http")){
+                tokens[i] =  `<html><a href="${tokens[i]}"></a></html>`
+                // let link = tokens[i].link(tokens[i])
+                // tokens[i] = link
+            }
+        }
+        let messageWithLink = tokens.join(' ')
+        // console.log("What is the message now? " + messageWithLink)
+        return messageWithLink
+        
+    }
     
-    
-    //setTimeout(function(){ }, 3000);
     
 
 
@@ -48,6 +59,7 @@ function Message({message, timestamp, user, userImage, translation, me, language
                 </span>
             </h4>
             <p class="my msg">{message}</p>
+                {/* <html><p class="msg">{links()}</p></html> */}
             <pre>
             </pre>
             </div>
