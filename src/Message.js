@@ -40,26 +40,23 @@ function Message({message, timestamp, user, userImage, translation, me, language
 
     return(
         self ? <div className="me"> 
-            <img src={userImage} alt=""/>
             <div className="message_info">
             <h4>
-                {user}
                 <span className="message_timestamp">
-                    {" " + new Date(timestamp?.toDate()).toDateString()} <br />{new Date(timestamp?.toDate()).toLocaleTimeString()}
+                    {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
             </h4>
-            <p class="msg">{message}</p>
+            <p class="my msg">{message}</p>
             <pre>
-                {self ? null : <code class="translate">{translation}</code>}
             </pre>
             </div>
         </div>: <div className="message">
         <img src={userImage} alt=""/>
             <div className="message_info">
-            <h4>
+            <h4 class="time_sender">
                 {user}
                 <span className="message_timestamp">
-                    {" " + new Date(timestamp?.toDate()).toDateString()} <br />{new Date(timestamp?.toDate()).toLocaleTimeString()}
+                    {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
             </h4>
             <p class="msg">{message}</p>
@@ -67,20 +64,7 @@ function Message({message, timestamp, user, userImage, translation, me, language
                 <code class="translate" data-id={language} onClick={(e) => getTranslation(e, language)}>{translation}
                 </code>
             </pre>
-                {/* <select onChange={(e) => setLang(e.target.value)}>
-                <option value="" disabled selected hidden>Select Dialect</option>
-                <option value="en">English</option>
-                <option value="ar">Arabic</option>
-                <option value="zh-CHS">Chinese</option>
-                <option value="fil">Filipino</option>
-                <option value="fr">French</option>
-                <option value="hi">Hindi</option>
-                <option value="ja">Japanese</option>
-                <option value="pt">Portuguese</option>
-                <option value="ru">Russian</option>
-                <option value="es">Spanish</option>
-            </select> */}
-         
+               
             <audio id="audio" src={audioTranslation}></audio>
            
 

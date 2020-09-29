@@ -6,7 +6,16 @@
 }
 
 .me {
-    margin-left: 600px
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+.message > img {
+    margin-top: 20px;
+}
+
+.time_sender {
+    margin-left: -60px;
+    font-size: 15px;
 }
 
 .message > img, .me > img {
@@ -29,7 +38,18 @@
 }
 
 .msg {
-    padding: 0 10px 10px 0;
+    padding: 6px 0px 12px 0px;
+}
+
+.me .msg {
+    background-color: #3232fdab;
+    border-radius: 10px 10px 0 10px;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    box-shadow: -2px -5px 17px 0px #00000059;
+    margin-top: 5px;
+    text-align: right;
 }
 
 .message_timestamp {
@@ -37,4 +57,8 @@
     font-weight: 300;
     font-size: 13px;
     border-radius: 30px;
+}
+
+.me .message_timestamp{
+    /* margin-left: 50px */
 }
