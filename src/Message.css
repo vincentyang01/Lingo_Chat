@@ -1,6 +1,6 @@
 .message, .me{
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     padding: 20px;
     overflow: hidden;
 }
@@ -25,7 +25,9 @@
     border-radius: 30px;
 }
 
-.translate {
+
+
+.same, .translate {
     background-color: #00ffff61;
     border-radius: 0 15px 15px 15px;
     padding: 5px;
@@ -37,8 +39,12 @@
     
 }
 
+.same {
+    /* margin-top: 10px; */
+}
+
 .msg {
-    padding: 6px 0px 12px 0px;
+    /* padding: 6px 0px 12px 0px; */
 }
 
 .me .msg {
