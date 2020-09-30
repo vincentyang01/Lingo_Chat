@@ -3,10 +3,15 @@ import './ChatInput.css';
 import db from "./firebase"
 import { useStateValue } from "./StateProvider"
 import firebase from "firebase"
-
+import Picker from 'emoji-picker-react';
 
 
 function ChatInput({ channelName, channelId, language }) {
+    const [chosenEmoji, setChosenEmoji] = useState(null);
+    const onEmojiClick = (event, emojiObject) => {
+        setChosenEmoji(emojiObject);
+    };
+    
     let convertToThisCode = "en"
     // let [lang, setLang] = useState('');
     console.log("I'm inside chat input. What are the props? ", language)
@@ -103,7 +108,9 @@ function ChatInput({ channelName, channelId, language }) {
                     language: nativeLang
                 })
                 console.log("native langauge ",nativeLang)
-            setInput('')
+                console.log("key of the post ", firebase.database().ref().child('posts').push().key)
+                // setKeys()
+                setInput('')
         } }, 500);
         
         
@@ -112,7 +119,7 @@ function ChatInput({ channelName, channelId, language }) {
         <div className="chatInput">
     
             <form>
-               
+            
             
                 <input 
                 
@@ -121,12 +128,11 @@ function ChatInput({ channelName, channelId, language }) {
                     type="text" 
                     placeholder={`Message #${channelName?.toLowerCase()}`} />
                 <button type="submit" onClick={sendMessage}>SEND</button>
+                {/* <Picker onEmojiClick={onEmojiClick} /> */}
             </form>
             {/* <div class="select">    
             <span class="lang">Message will translate in....</span>    */}
             
-  
-       
         {/* </div> */}
         </div>
     )

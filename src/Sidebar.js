@@ -7,6 +7,7 @@ import AddIcon from "@material-ui/icons/Add"
 import db from "./firebase"
 import { useStateValue } from "./StateProvider"
 import LanguageOverlay from './LanguageOverlay'
+// import DeleteRounded from '@material-ui/icons/DeleteRounded'
 
 
 function Sidebar(props){
