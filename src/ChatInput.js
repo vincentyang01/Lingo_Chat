@@ -117,8 +117,6 @@ function ChatInput({ channelName, channelId, language }) {
                 // setKeys()
                 setInput('')
         } }, 500);
-        
-        
     }, 500);
     }
     return (

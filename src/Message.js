@@ -21,7 +21,7 @@ function Message({message, timestamp, user, userImage, translation, me, language
         fetch(`https://microsoft-azure-translation-v1.p.rapidapi.com/Speak?text=${sentance}&language=${lang}`, {
             "method": "GET",
             "headers": {
-                "x-rapidapi-host": "microsoft-azure-translation-v1.p.rapidapi.com",
+                "x--host": "microsoft-azure-translation-v1.p.rapidapi.com",
                 "x-rapidapi-key": ""}})
         .then(response => { 
             audioTranslation = response.url
@@ -45,15 +45,12 @@ function Message({message, timestamp, user, userImage, translation, me, language
     return(
         self ? <div className="me"> 
             <DeleteRoundedIcon className="del" onClick={(e) => deleteThis(e)}/>
-            <div className="message_info">
-                
-            <h4>
                 <span className="message_timestamp">
                     {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
             <div className="message_info">
-            <h4>
-            </h4>
+                <h4>
+                </h4>
             <Linkify><p class="my msg">{message}</p></Linkify>
             <pre>
             </pre>
@@ -67,15 +64,17 @@ function Message({message, timestamp, user, userImage, translation, me, language
                     {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
             </h4>
-            
-   // <span>{language === 'fil-PH' || language === 'gu' ? null : <VolumeDownIcon/>}</span><span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}><Linkify>{message}</Linkify></span>
+            {/* ------------------------------------------------------------ */}
+   {/* <span>{language === 'fil-PH' || language === 'gu' ? null : <VolumeDownIcon/>}</span><span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}><Linkify>{message}</Linkify></span> */}
            {console.log("Message equal to translation: ",message, translation) }
     <span>{language === 'fil-PH' || language === 'gu' || message === translation ? null : <VolumeDownIcon/>}</span>
-    {message === translation ? <p><br></br><span class="msg same" data-id={language}>{message}</span></p> : <span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}>{message}</span>}
+    {message === translation ? <p><br></br><span class="msg same" data-id={language}>{message}</span></p> : <span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}>  {message}</span>}
+            
+            
             <div></div>
             <pre>
                 <br></br>
-                {message === translation || translation === "" ? null : <code class="translate" > {translation}</code>}
+                {message === translation || translation === "" ? null : <Linkify><code class="translate" > {translation}</code></Linkify>}
             </pre>
             
             <audio id="audio" src={audioTranslation}></audio>
