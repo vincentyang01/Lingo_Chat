@@ -44,10 +44,10 @@ function Message({message, timestamp, user, userImage, translation, me, language
 
     return(
         self ? <div className="me"> 
-            <DeleteRoundedIcon className="del" onClick={(e) => deleteThis(e)}/>
                 <span className="message_timestamp">
                     {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
+            <DeleteRoundedIcon className="del" onClick={(e) => deleteThis(e)}/>
             <div className="message_info">
                 <h4>
                 </h4>
@@ -74,7 +74,7 @@ function Message({message, timestamp, user, userImage, translation, me, language
             <div></div>
             <pre>
                 <br></br>
-                {message === translation || translation === "" ? null : <Linkify><code class="translate" > {translation}</code></Linkify>}
+                {message === translation || translation === "" ? null : <Linkify><code class="translate" > {translation.trim()}</code></Linkify>}
             </pre>
             
             <audio id="audio" src={audioTranslation}></audio>
