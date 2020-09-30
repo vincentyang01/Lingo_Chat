@@ -5,6 +5,7 @@
     border-top: 1px solid #840284;
     max-width: 260px;
     color: white;
+    box-shadow: inset -4px -2px 20px 10px #6d80ef87;
 }
 
 .sidebar > hr {

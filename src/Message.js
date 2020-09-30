@@ -14,6 +14,7 @@ function Message({message, timestamp, user, userImage, translation, me, language
     //let [lang, setLang] = useState('en');
     
     const getTranslation = (e, language) => {
+        
         const lang = language
         const sentance = encodeURI(e.target.innerText)
         // voice response
@@ -50,6 +51,8 @@ function Message({message, timestamp, user, userImage, translation, me, language
                 <span className="message_timestamp">
                     {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
+            <div className="message_info">
+            <h4>
             </h4>
             <Linkify><p class="my msg">{message}</p></Linkify>
             <pre>
@@ -65,12 +68,14 @@ function Message({message, timestamp, user, userImage, translation, me, language
                 </span>
             </h4>
             
-    <span>{language === 'fil-PH' || language === 'gu' ? null : <VolumeDownIcon/>}</span><span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}><Linkify>{message}</Linkify></span>
+   // <span>{language === 'fil-PH' || language === 'gu' ? null : <VolumeDownIcon/>}</span><span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}><Linkify>{message}</Linkify></span>
+           {console.log("Message equal to translation: ",message, translation) }
+    <span>{language === 'fil-PH' || language === 'gu' || message === translation ? null : <VolumeDownIcon/>}</span>
+    {message === translation ? <p><br></br><span class="msg same" data-id={language}>{message}</span></p> : <span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}>{message}</span>}
             <div></div>
             <pre>
                 <br></br>
-                <code class="translate" >{translation}
-                </code>
+                {message === translation || translation === "" ? null : <code class="translate" > {translation}</code>}
             </pre>
             
             <audio id="audio" src={audioTranslation}></audio>

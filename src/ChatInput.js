@@ -12,7 +12,8 @@ function ChatInput({ channelName, channelId, language }) {
         setChosenEmoji(emojiObject);
     };
     
-    let convertToThisCode = "en"
+    let convertToThisCode = ""
+
     // let [lang, setLang] = useState('');
     console.log("I'm inside chat input. What are the props? ", language)
     // console.log("Checking reassignment to code", lang)
@@ -53,7 +54,6 @@ function ChatInput({ channelName, channelId, language }) {
         console.log("in sendMessage - convert variable: ", convertToThisCode)
         // debugger
         let uri = encodeURI(input)
-
         fetch(`https://microsoft-azure-translation-v1.p.rapidapi.com/Detect?text=${uri}`, {
             "method": "GET",
             "headers": {
@@ -67,14 +67,19 @@ function ChatInput({ channelName, channelId, language }) {
             let first = words.split(">")
             let second = first[1].split("<")
             nativeLang = second[0]
+            if(convertToThisCode === ""){
+                convertToThisCode = nativeLang
+            }
             })
             .catch(err => {
                 console.log(err);
             }
+    
         );
         
+        setTimeout(function(){ 
         
-        
+        console.log("before putting in database",convertToThisCode)
         fetch(`https://microsoft-azure-translation-v1.p.rapidapi.com/translate?to=${convertToThisCode}&text=${uri}`, {
             "method": "GET",
             "headers": {
@@ -89,7 +94,7 @@ function ChatInput({ channelName, channelId, language }) {
         let first = words.split(">")
         let second = first[1].split("<")
         translate = second[0]
-
+            console.log("ran stored translate", translate)
         
         
         })
@@ -114,6 +119,7 @@ function ChatInput({ channelName, channelId, language }) {
         } }, 500);
         
         
+    }, 500);
     }
     return (
         <div className="chatInput">
