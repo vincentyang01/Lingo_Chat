@@ -33,7 +33,7 @@ function App(props) {
                 <Chat user={user} sendLanguage={language} />
               </Route>
               <Route path="/">
-                <h1>Welcome!</h1>
+                {/* <h1>Welcome!</h1> */}
               </Route>
             </Switch>
           </div>

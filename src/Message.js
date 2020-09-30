@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import "./Message.css"
 import VolumeDownIcon from '@material-ui/icons/VolumeDown';
-
+import Linkify from 'react-linkify';
+import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded'
 
 
 function Message({message, timestamp, user, userImage, translation, me, language}) {
@@ -31,36 +32,29 @@ function Message({message, timestamp, user, userImage, translation, me, language
     function play(url) {
         new Audio(url).play()
     }
+    
+    const deleteThis = (e) => {
+        e.target.parentElement.parentElement.remove()
 
-    const links = () => {
-        let tokens = message.split(" ")
-        for(let i = 0; i < tokens.length; i++) {
-            if(tokens[i].includes("http")){
-                tokens[i] =  `<html><a href="${tokens[i]}"></a></html>`
-                // let link = tokens[i].link(tokens[i])
-                // tokens[i] = link
-            }
-        }
-        let messageWithLink = tokens.join(' ')
-        // console.log("What is the message now? " + messageWithLink)
-        return messageWithLink
-        
+        // var database = firebase.database().ref();
+        // var postsRef = database.child("posts");
+
+
     }
-    
-    
-
-
 
     return(
         self ? <div className="me"> 
+            <DeleteRoundedIcon className="del" onClick={(e) => deleteThis(e)}/>
+            <div className="message_info">
+                
+            <h4>
                 <span className="message_timestamp">
                     {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
             <div className="message_info">
             <h4>
             </h4>
-            <p class="my msg">{message}</p>
-                {/* <html><p class="msg">{links()}</p></html> */}
+            <Linkify><p class="my msg">{message}</p></Linkify>
             <pre>
             </pre>
             </div>
@@ -73,6 +67,8 @@ function Message({message, timestamp, user, userImage, translation, me, language
                     {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
             </h4>
+            
+   // <span>{language === 'fil-PH' || language === 'gu' ? null : <VolumeDownIcon/>}</span><span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}><Linkify>{message}</Linkify></span>
            {console.log("Message equal to translation: ",message, translation) }
     <span>{language === 'fil-PH' || language === 'gu' || message === translation ? null : <VolumeDownIcon/>}</span>
     {message === translation ? <p><br></br><span class="msg same" data-id={language}>{message}</span></p> : <span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}>{message}</span>}
@@ -81,9 +77,9 @@ function Message({message, timestamp, user, userImage, translation, me, language
                 <br></br>
                 {message === translation || translation === "" ? null : <code class="translate" > {translation}</code>}
             </pre>
-               
+            
             <audio id="audio" src={audioTranslation}></audio>
-           
+        
 
             </div>
         </div>
