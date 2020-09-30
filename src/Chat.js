@@ -50,8 +50,9 @@ function Chat(props) {
                 </div>
             </div>
             <div className="chat_messages">
-                {roomMessages.map(({message, timestamp, user, userImage, translation, language}) => (
+                {roomMessages.map(({objId, message, timestamp, user, userImage, translation, language}) => (
                     <Message 
+                        objId = {objId}
                         message = {message}
                         timestamp = {timestamp}
                         user={user}
@@ -59,6 +60,7 @@ function Chat(props) {
                         translation={translation}
                         me={me}
                         language={language}
+                        channelId={roomId}
                         />
                         ))
                 }
