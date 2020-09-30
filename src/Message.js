@@ -67,8 +67,8 @@ function Message({message, timestamp, user, userImage, translation, me, language
             {/* ------------------------------------------------------------ */}
    {/* <span>{language === 'fil-PH' || language === 'gu' ? null : <VolumeDownIcon/>}</span><span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}><Linkify>{message}</Linkify></span> */}
            {console.log("Message equal to translation: ",message, translation) }
-    <span>{language === 'fil-PH' || language === 'gu' || message === translation ? null : <VolumeDownIcon/>}</span>
-    {message === translation ? <p><br></br><span class="msg same" data-id={language}>{message}</span></p> : <span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}>  {message}</span>}
+    <span>{language === 'fil-PH' || language === 'gu' || message === translation || translation === "" ? null : <VolumeDownIcon/>}</span>
+    {message === translation || translation === "" ? <p><br></br><span class="msg same" data-id={language}>{message}</span></p> : <span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}>  {message}</span>}
             
             
             <div></div>
