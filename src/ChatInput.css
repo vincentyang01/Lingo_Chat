@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Open+Sans&display=swap');
+
+
 .chatInput {
     border-radius: 20px;
 }
@@ -20,6 +23,7 @@
     outline:none;
     position: fixed;
 
+
 }
 .chatInput > form {
     position: relative;
@@ -34,6 +38,8 @@
     border: 1px solid gray;
     border-radius: 3px;
     padding: 20px;
+    font-family: 'Balsamiq Sans';
+    font-size: 20px;
 }
 
 #root > div > div.app_body > div.chat > div.chatInput > form > button {

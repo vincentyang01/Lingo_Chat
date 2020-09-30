@@ -53,11 +53,11 @@ function Message({message, timestamp, user, userImage, translation, me, language
 
     return(
         self ? <div className="me"> 
-            <div className="message_info">
-            <h4>
                 <span className="message_timestamp">
                     {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
+            <div className="message_info">
+            <h4>
             </h4>
             <p class="my msg">{message}</p>
                 {/* <html><p class="msg">{links()}</p></html> */}
@@ -73,7 +73,7 @@ function Message({message, timestamp, user, userImage, translation, me, language
                     {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
             </h4>
-            
+           {console.log("Message equal to translation: ",message, translation) }
     <span>{language === 'fil-PH' || language === 'gu' || message === translation ? null : <VolumeDownIcon/>}</span>
     {message === translation ? <p><br></br><span class="msg same" data-id={language}>{message}</span></p> : <span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}>{message}</span>}
             <div></div>

@@ -1,13 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Open+Sans&display=swap');
+
 .message, .me{
     display: flex;
     /* align-items: center; */
     padding: 20px;
     overflow: hidden;
+    font-family:'Balsamiq Sans';
+    font-size: 20px;
 }
 
 .me {
     justify-content: flex-end;
     margin-right: 20px;
+    margin-top: 10px;
 }
 .message > img {
     margin-top: 20px;
@@ -16,6 +21,7 @@
 .time_sender {
     margin-left: -60px;
     font-size: 15px;
+    font-family: 'open sans';
 }
 
 .message > img, .me > img {
@@ -63,8 +69,11 @@
     font-weight: 300;
     font-size: 13px;
     border-radius: 30px;
+
 }
 
 .me .message_timestamp{
     /* margin-left: 50px */
+    margin-top: -21px;
+    height:min-content
 }
