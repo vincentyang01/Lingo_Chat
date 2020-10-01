@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import './ChatInput.css';
 import db from "./firebase"
-import { useStateValue } from "./StateProvider"
+import { storage } from './firebase'
 import firebase from "firebase"
-import Picker from 'emoji-picker-react';
+import { useStateValue } from "./StateProvider"
+import PhotoUpload from "./PhotoUpload"
 
 
 function ChatInput({ channelName, channelId, language }) {
-    const [chosenEmoji, setChosenEmoji] = useState(null);
-    const onEmojiClick = (event, emojiObject) => {
-        setChosenEmoji(emojiObject);
-    };
-    
     let convertToThisCode = ""
 
     // let [lang, setLang] = useState('');
@@ -59,7 +55,7 @@ function ChatInput({ channelName, channelId, language }) {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "microsoft-azure-translation-v1.p.rapidapi.com",
-                "x-rapidapi-key": ""
+                "x-rapidapi-key": process.env.REACT_APP_GOOGLE_API_KEY,
             }
             })
             .then(response => response.text())
@@ -85,7 +81,7 @@ function ChatInput({ channelName, channelId, language }) {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "microsoft-azure-translation-v1.p.rapidapi.com",
-                "x-rapidapi-key": "",
+                "x-rapidapi-key": process.env.REACT_APP_GOOGLE_API_KEY,
                 "accept": "application/json"
             }
         })
@@ -103,43 +99,74 @@ function ChatInput({ channelName, channelId, language }) {
             console.log(err);
         });
         setTimeout(function(){if(channelId) {
-        
-            db.collection('rooms')
-                .doc(channelId).collection('messages').add({
-                    message: input,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                    user: user.displayName,
-                    userImage: user.photoURL,
-                    translation: translate,
-                    language: nativeLang
-                })
-                console.log("native langauge ",nativeLang)
-                console.log("key of the post ", firebase.database().ref().child('posts').push().key)
-                // setKeys()
-                setInput('')
+        let obj = {
+            objId: "",
+            message: input,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            user: user.displayName,
+            userImage: user.photoURL,
+            translation: translate,
+            language: nativeLang
+        }
+        db.collection('rooms').doc(channelId).collection('messages').add(obj)
+        .then(docRef => {
+            console.log("Document written with ID: ", docRef.id);
+            obj.objId = docRef.id
+            db.collection('rooms').doc(channelId).collection('messages').doc(docRef.id).update({objId: docRef.id})
+            // firebase.database().ref('rooms/' + channelId + '/messages/' + docRef.id).update({objId: docRef.id})
+        })
+        console.log("native langauge ", nativeLang)
+        setInput('')
         } }, 500);
     }, 500);
 }
     }
+
+    const allInputs = {imgUrl: ''}
+    const [imageAsFile, setImageAsFile] = useState('')
+    const [imageAsUrl, setImageAsUrl] = useState(allInputs)
+
+    const fileUploadHandler = (e) => {
+        const image = e.target.files[0]
+        setImageAsFile(imageAsFile => (image))
+    }
+
+    const fileSubmitHandler = (e) => {
+        e.preventDefault()
+        if(imageAsFile === ''){
+            console.log(`Not an acceptable file type.`)
+        }
+        const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
+        uploadTask.on('state_changed',
+        (snapShot) => {
+            console.log(snapShot)
+        }, (err) => {
+            console.log(err)
+        }, () => {
+            storage.ref('images').child(imageAsFile.name).getDownloadURL()
+            .then(fireBaseUrl => {
+                // setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
+                setImageAsUrl(fireBaseUrl)
+            })
+        })
+        debugger
+    }
+    
     return (
         <div className="chatInput">
-    
             <form>
-            
-            
                 <input 
-                
                     value={input}
                     onChange={e => setInput(e.target.value)}
                     type="text" 
                     placeholder={`Message #${channelName?.toLowerCase()}`} />
                 <button type="submit" onClick={sendMessage}>SEND</button>
-                {/* <Picker onEmojiClick={onEmojiClick} /> */}
             </form>
-            {/* <div class="select">    
-            <span class="lang">Message will translate in....</span>    */}
-            
-        {/* </div> */}
+                {/* <PhotoUpload /> */}
+            {/* <form>
+                <input className="imgSelect" type="file" accept="image/x-png,image/gif,image/jpeg" onChange={(e) => fileUploadHandler(e)}/>
+                <button className="imgSubmit" onClick={(e) => fileSubmitHandler(e)}>Upload</button>
+            </form> */}
         </div>
     )
 }

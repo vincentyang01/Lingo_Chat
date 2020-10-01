@@ -32,7 +32,7 @@ function Login() {
         <div className="login">
             <div className="login_container">
                 <img src="" alt=""/>
-                <h1> TranslApp </h1>
+                <h1> Lingo Chat </h1>
                 <Button onClick={signIn}> Sign in with Google </Button>
             </div>
         </div>
