@@ -44,6 +44,7 @@ function ChatInput({ channelName, channelId, language }) {
 
     const sendMessage = (e) => {
         e.preventDefault()
+        if(input.trim().length > 0){
         languageCode()
         // setLang(convertToThisCode)
         // console.log("in sendMessage", lang)
@@ -118,6 +119,7 @@ function ChatInput({ channelName, channelId, language }) {
         setInput('')
         } }, 500);
     }, 500);
+}
     }
 
     const allInputs = {imgUrl: ''}

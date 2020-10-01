@@ -46,10 +46,13 @@ function Message({objId, message, timestamp, user, userImage, translation, me, l
 
     return(
         self ? <div className="me"> 
+
             <DeleteRoundedIcon id={objId} className="del" onClick={(e) => deleteThis(e)}/>
+
                 <span className="message_timestamp">
                     {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
+            <DeleteRoundedIcon className="del" onClick={(e) => deleteThis(e)}/>
             <div className="message_info">
                 <h4>
                 </h4>
@@ -67,16 +70,17 @@ function Message({objId, message, timestamp, user, userImage, translation, me, l
                 </span>
             </h4>
             {/* ------------------------------------------------------------ */}
-    {/* <span>{language === 'fil-PH' || language === 'gu' ? null : <VolumeDownIcon/>}</span><span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}><Linkify>{message}</Linkify></span> */}
-    {console.log("Message equal to translation: ",message, translation) }
-    <span>{language === 'fil-PH' || language === 'gu' || message === translation ? null : <VolumeDownIcon/>}</span>
-    {message === translation ? <p><br></br><span class="msg same" data-id={language}>{message}</span></p> : <span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}>  {message}</span>}
+
+   {/* <span>{language === 'fil-PH' || language === 'gu' ? null : <VolumeDownIcon/>}</span><span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}><Linkify>{message}</Linkify></span> */}
+           {console.log("Message equal to translation: ",message, translation) }
+    <span>{language === 'fil-PH' || language === 'gu' || message === translation || translation === "" ? null : <VolumeDownIcon/>}</span>
+    {message === translation || translation === "" ? <p><br></br><span class="msg same" data-id={language}>{message}</span></p> : <span class="msg" data-id={language} onClick={(e) => getTranslation(e, language)}>  {message}</span>}
             
             
             <div></div>
             <pre>
                 <br></br>
-                {message === translation || translation === "" ? null : <Linkify><code class="translate" > {translation}</code></Linkify>}
+                {message === translation || translation === "" ? null : <Linkify><code class="translate" > {translation.trim()}</code></Linkify>}
             </pre>
             
             <audio id="audio" src={audioTranslation}></audio>
