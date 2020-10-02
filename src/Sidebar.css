@@ -1,14 +1,16 @@
 .sidebar {
     /* background-color: var(--slack-color); */
     /* background-color: #18399e; */
-    background: rgb(131,58,180);
-    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(170,49,132,1) 16%, rgba(253,29,29,1) 50%, rgba(252,147,61,1) 90%, rgba(252,176,69,1) 100%);
-
+    /* background: rgb(131,58,180); */
+    /* background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(170,49,132,1) 16%, rgba(253,29,29,1) 50%, rgba(252,147,61,1) 90%, rgba(252,176,69,1) 100%); */
+    box-shadow: 5px 9px 17px 5px #6e6e6f87;
+    /* background-color: #0093E9; */
+    background-image: linear-gradient(to right, #0093E9 0%, #80D0C7 100%);
     flex: 0.3;
     border-top: 1px solid #840284;
     max-width: 260px;
     color: white;
-    box-shadow: inset -4px -2px 20px 10px #6d80ef87;
+    box-shadow: 3px 2px 20px 10px #39393c87;
 }
 
 .sidebar > hr {
