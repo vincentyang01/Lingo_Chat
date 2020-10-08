@@ -24,7 +24,7 @@ function Message({objId, message, timestamp, user, userImage, translation, me, l
             "method": "GET",
             "headers": {
                 "x--host": "microsoft-azure-translation-v1.p.rapidapi.com",
-                "x-rapidapi-key": process.env.REACT_APP_GOOGLE_API_KEY}})
+                "x-rapidapi-key": "54016618dfmshd0436725d830187p10d23cjsne7d6ad3ee557"}})
         .then(response => { 
             audioTranslation = response.url
             play(response.url)
@@ -52,7 +52,7 @@ function Message({objId, message, timestamp, user, userImage, translation, me, l
                 <span className="message_timestamp">
                     {" " + new Date(timestamp?.toDate()).toDateString()} {new Date(timestamp?.toDate()).toLocaleTimeString()}
                 </span>
-            <DeleteRoundedIcon className="del" onClick={(e) => deleteThis(e)}/>
+            {/* <DeleteRoundedIcon className="del" onClick={(e) => deleteThis(e)}/> */}
             <div className="message_info">
                 <h4>
                 </h4>

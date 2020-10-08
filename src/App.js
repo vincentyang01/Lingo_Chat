@@ -14,7 +14,7 @@ function App(props) {
 
   let sendLanguage = (props) => {
     setLanguage(props)
-    console.log("Back in App: ", props, language)
+    console.log("Back in App: PROPS: ", props, "Language: ", language)
   }
 
     

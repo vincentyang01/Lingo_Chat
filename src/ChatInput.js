@@ -55,7 +55,7 @@ function ChatInput({ channelName, channelId, language }) {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "microsoft-azure-translation-v1.p.rapidapi.com",
-                "x-rapidapi-key": process.env.REACT_APP_GOOGLE_API_KEY,
+                "x-rapidapi-key": "54016618dfmshd0436725d830187p10d23cjsne7d6ad3ee557",
             }
             })
             .then(response => response.text())
@@ -81,7 +81,7 @@ function ChatInput({ channelName, channelId, language }) {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "microsoft-azure-translation-v1.p.rapidapi.com",
-                "x-rapidapi-key": process.env.REACT_APP_GOOGLE_API_KEY,
+                "x-rapidapi-key": "54016618dfmshd0436725d830187p10d23cjsne7d6ad3ee557",
                 "accept": "application/json"
             }
         })
