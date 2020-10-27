@@ -10,18 +10,12 @@ import PhotoUpload from "./PhotoUpload"
 function ChatInput({ channelName, channelId, language }) {
     let convertToThisCode = ""
 
-    // let [lang, setLang] = useState('');
-    console.log("I'm inside chat input. What are the props? ", language)
-    // console.log("Checking reassignment to code", lang)
-
     let translate = ''
     let nativeLang = ''
     const [input, setInput] = useState('');
     const [{ user }] = useStateValue();
 
     const languageCode = () => {
-        console.log("In ChatInput, under languageCode: ", language)
-        // debugger
         if(language === "English") {convertToThisCode = "en"}
         else if(language === "Arabic") {convertToThisCode = "ar"} 
         else if(language === "Chinese") {convertToThisCode = "zh-CHS"}
@@ -46,10 +40,6 @@ function ChatInput({ channelName, channelId, language }) {
         e.preventDefault()
         if(input.trim().length > 0){
         languageCode()
-        // setLang(convertToThisCode)
-        // console.log("in sendMessage", lang)
-        console.log("in sendMessage - convert variable: ", convertToThisCode)
-        // debugger
         let uri = encodeURI(input)
         fetch(`https://microsoft-azure-translation-v1.p.rapidapi.com/Detect?text=${uri}`, {
             "method": "GET",
@@ -113,7 +103,6 @@ function ChatInput({ channelName, channelId, language }) {
             console.log("Document written with ID: ", docRef.id);
             obj.objId = docRef.id
             db.collection('rooms').doc(channelId).collection('messages').doc(docRef.id).update({objId: docRef.id})
-            // firebase.database().ref('rooms/' + channelId + '/messages/' + docRef.id).update({objId: docRef.id})
         })
         console.log("native langauge ", nativeLang)
         setInput('')
@@ -145,7 +134,6 @@ function ChatInput({ channelName, channelId, language }) {
         }, () => {
             storage.ref('images').child(imageAsFile.name).getDownloadURL()
             .then(fireBaseUrl => {
-                // setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
                 setImageAsUrl(fireBaseUrl)
             })
         })

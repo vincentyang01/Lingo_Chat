@@ -10,14 +10,12 @@ class LanguageOverlay extends React.Component {
     selection = (language) => {
         console.log("Hello from languageoverlay: ", this.props.toggleOverlay)
         this.setState({ clicked: !this.state.clicked })
-        // debugger
         this.props.sendLanguage(language)
     }
     
     
     render(){
         return (
-            // this.state.clicked ?
                 <div className="overlay">
                     <div class="grid-container">
                         <div id="a1" class="grid-item" onClick={(e) => this.selection(e.target.parentElement.innerText)} value="ar"><h5>Arabic</h5></div>
@@ -38,11 +36,8 @@ class LanguageOverlay extends React.Component {
                         <div id="a12" class="grid-item" onClick={(e) => this.selection(e.target.parentElement.innerText)} value="ru"><h5>Spanish</h5></div>  
                         <div id="a16" class="grid-item" onClick={(e) => this.selection(e.target.parentElement.innerText)} value="th"><h5>Thai</h5></div>
                         <div id="a17" class="grid-item" onClick={(e) => this.selection(e.target.parentElement.innerText)} value="vi"><h5>Vietnamese</h5></div>
-                     
                     </div>
-                </div> 
-                // : ""       
-            
+                </div>             
         )
     }
 

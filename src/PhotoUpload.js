@@ -3,9 +3,6 @@ import { storage } from './firebase'
 import db from "./firebase"
 import firebase from "firebase"
 
-// const db = app.firestore();
-// const storage = app.storage();
-
 function PhotoUpload(){
     const allInputs = {imgUrl: ''}
     const [imageAsFile, setImageAsFile] = useState('')
@@ -31,7 +28,6 @@ function PhotoUpload(){
         }, () => {
             storage.ref('images').child(imageAsFile.name).getDownloadURL()
             .then(fireBaseUrl => {
-                // setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
                 setImageAsUrl(fireBaseUrl)
             })
         })

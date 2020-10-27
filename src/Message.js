@@ -11,15 +11,11 @@ function Message({objId, message, timestamp, user, userImage, translation, me, l
     let self = me === user
     let uri = encodeURI(message)
     let audioTranslation = ""
-
-
-    //let [lang, setLang] = useState('en');
     
     const getTranslation = (e, language) => {
         
         const lang = language
         const sentance = encodeURI(e.target.innerText)
-        // voice response
         fetch(`https://microsoft-azure-translation-v1.p.rapidapi.com/Speak?text=${sentance}&language=${lang}`, {
             "method": "GET",
             "headers": {
@@ -37,9 +33,6 @@ function Message({objId, message, timestamp, user, userImage, translation, me, l
     
     const deleteThis = (e) => {
         db.collection('rooms').doc(channelId).collection('messages').doc(e.target.parentElement.id).delete();
-        // db.collection('rooms').doc(channelId).collection('messages').doc(docRef.id).update({objId: docRef.id})
-
-
     }
 
     return(

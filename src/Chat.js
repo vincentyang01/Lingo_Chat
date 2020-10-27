@@ -7,7 +7,6 @@ import ChatInput from "./ChatInput"
 
 
 function Chat(props) {
-    // let objDiv
     const { roomId } = useParams();
     const [roomDetails, setRoomDetails] = useState(null)
     const [roomMessages, setRoomMessages] = useState([])
