@@ -24,7 +24,7 @@ function SidebarOption({Icon, title, id, addChannelOption}) {
     }
 
     return (
-        <div className="sidebarOption" onClick={ ? addChannel : selectChannel}>
+        <div className="sidebarOption" onClick={ addChannelOption ? addChannel : selectChannel}>
             {Icon && <Icon className="sidebarOption_icon"/>}
             {Icon 
                 ? <h3>{title}</h3>

@@ -36,9 +36,7 @@ function Message({objId, message, timestamp, user, userImage, translation, me, l
     }
     
     const deleteThis = (e) => {
-        // e.target.parentElement.parentElement.remove()
         db.collection('rooms').doc(channelId).collection('messages').doc(e.target.parentElement.id).delete();
-        // debugger
         // db.collection('rooms').doc(channelId).collection('messages').doc(docRef.id).update({objId: docRef.id})
 
 
